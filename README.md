@@ -1,5 +1,6 @@
 
-![k7jsfAW](https://github.com/user-attachments/assets/eaa1d69d-e5c6-4c1b-8c07-238a69b05b8b)
+![FAwbZEK](https://github.com/user-attachments/assets/90236d67-7157-414b-a70c-6f2b2b56a2b7)
+
 
 
 ![мем](https://github.com/user-attachments/assets/774b0d72-69ad-4c54-89ed-1237fa001630)
