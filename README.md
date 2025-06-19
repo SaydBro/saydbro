@@ -1,4 +1,5 @@
-  ![g5j4y7Y](https://github.com/user-attachments/assets/910feeee-6eec-4669-83ce-f42d74d66a33)
+
+![k7jsfAW](https://github.com/user-attachments/assets/eaa1d69d-e5c6-4c1b-8c07-238a69b05b8b)
 
 
 ![мем](https://github.com/user-attachments/assets/774b0d72-69ad-4c54-89ed-1237fa001630)
