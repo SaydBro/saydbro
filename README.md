@@ -1,3 +1,4 @@
+![welcome](https://github.com/user-attachments/assets/9093c797-116f-4f37-89ae-941989edaae3)
 
 ![мем](https://github.com/user-attachments/assets/774b0d72-69ad-4c54-89ed-1237fa001630)
 
