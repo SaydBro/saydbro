@@ -1,4 +1,4 @@
-# *Demo2025 - Модуль 2*
+# *Demo2025 - Модуль 1*
 
 ### **[Задание](https://github.com/damh66/demo2025/blob/main/%D0%9A%D0%9E%D0%94%2009.02.06-1-2025%20%D0%A2%D0%BE%D0%BC%201%20(%D1%81%D0%BE%D0%BA%D1%80).pdf)**
 
@@ -6,19 +6,28 @@
 
 ### Содержание
 
-1. **[Настройте доменный контроллер Samba на машине BR-SRV](https://github.com/damh66/demo2025/blob/main/module2/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)**
-    > Не решено
-2. **[Сконфигурируйте файловое хранилище](https://github.com/damh66/demo2025/blob/main/module2/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)**
+1. **[Произведите базовую настройку устройств](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)**
 
-3. **[Настройте службу сетевого времени на базе сервиса chrony](https://github.com/damh66/demo2025/tree/main/module2#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)**
+2. **[Настройка ISP](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)**
+  
+3. **[Создание локальных учетных записей](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)**
+  
+4. **[Настройте на интерфейсе HQ-RTR в сторону офиса HQ виртуальный коммутатор](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-4)**
+   
+5. **[Настройка безопасного удаленного доступа на серверах HQ-SRV и BR-SRV](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-5)**
+  
+6. **[Между офисами HQ и BR необходимо сконфигурировать IP-туннель](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-6)**
 
-4. **[Сконфигурируйте ansible на сервере BR-SRV](https://github.com/damh66/demo2025/tree/main/module2#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-4)**
+7. **[Обеспечьте динамическую маршрутизацию](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-7)**
 
-5. **[Развертывание приложений в Docker на сервере BR-SRV](https://github.com/damh66/demo2025/tree/main/module2#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-5)**
-    > Решено не полностью (проблема в **учетной записи пользователя базы данных**)
-6. **[На маршрутизаторах сконфигурируйте статическую трансляцию портов](https://github.com/damh66/demo2025/tree/main/module2#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-6)**
+8. **[Настройка динамической трансляции адресов](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-8)**
 
-7. **[Запустите сервис moodle на сервере HQ-SRV](https://github.com/damh66/demo2025/tree/main/module2#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-7)**
+9. **[Настройка протокола динамической конфигурации хостов](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-9)**
+
+10. **[Настройка DNS для офисов HQ и BR](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-10)**
+
+11. **[Настройте часовой пояс на всех устройствах, согласно месту проведения экзамена](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-11)**
+
 <br/>
 
 <br/>
@@ -32,23 +41,276 @@
 
 ## Задание 1
 
-### Настройте доменный контроллер Samba на машине BR-SRV
+### Произведите базовую настройку устройств
 
-- Создайте 5 пользователей для офиса HQ: имена пользователей фомата user№.hq. Создайте группу hq, введите в эту группу созданных пользователей
+- Настройте имена устройств согласно топологии. Используйте полное доменное имя
 
-- Введите в домен машину HQ-CLI
+- На всех устройствах необходимо сконфигурировать IPv4
 
-- Пользователи группы hq имеют право аутентифицироваться на клиентском ПК
+- IP-адрес должен быть из приватного диапазона, в случае, если сеть локальная, согласно RFC1918
 
-- Пользователи группы hq должны иметь возможность повышать привилегии для выполнения ограниченного набора команд: cat, grep, id. Запускать другие команды с повышенными привилегиями пользователи не имеют права
+- Локальная сеть в сторону HQ-SRV(VLAN100) должна вмещать не более 64 адресов
 
-- Выполните импорт пользователей из файла users.csv. Файл будет располагаться н авиртуальной машине BR-SRV в папке /opt
+- Локальная сеть в сторону HQ-CLI(VLAN200) должна вмещать не более 16 адресов
+
+- Локальная сеть в сторону BR-SRV должна вмещать не более 32 адресов
+
+- Локальная сеть для управления(VLAN999) должна вмещать не более 8 адресов
+
+- Сведения об адресах занесите в отчёт, в качестве примера используйте Таблицу 3
 
 <br/>
 
 <details>
-<summary>Не решено</summary>
+<summary>Решение</summary>
 <br/>
+
+**Полное доменное имя можно посмотреть в таблице для [Задания 10](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-10)**
+
+<br/>
+
+#### Настройка имен устройств на ALT Linux
+```yml
+hostnamectl set-hostname <FQDN>; exec bash
+```
+> FQDN (Fully Qualified Domain Name) - полное доменное имя
+> 
+> `exec bash` - обновление оболочки
+
+<br/>
+
+#### Настройка имен устройств на EcoRouter
+
+Переходим в режим конфигурации и прописываем следующее:
+```yml
+hostname <name>
+```
+> `<name>` - желаемое имя устройства
+
+<br/>
+
+<table align="center">
+  <tr>
+    <td align="center">Сеть</td>
+    <td align="center">Адрес подсети</td>
+    <td align="center">Пул-адресов</td>
+  </tr>
+  <tr>
+    <td align="center">SRV-Net (VLAN 100)</td>
+    <td align="center">192.168.100.0/26</td>
+    <td align="center">192.168.100.1 - 192.168.100.62</td>
+  </tr>
+  <tr>
+    <td align="center">CLI-Net (VLAN 200)</td>
+    <td align="center">192.168.200.0/28</td>
+    <td align="center">192.168.200.1 - 192.168.200.14</td>
+  </tr>
+  <tr>
+    <td align="center">BR-Net</td>
+    <td align="center">192.168.0.0/27</td>
+    <td align="center">192.168.0.1 - 192.168.0.30</td>
+  </tr>
+  <tr>
+    <td align="center">MGMT (VLAN 999)</td>
+    <td align="center">192.168.99.0/29</td>
+    <td align="center">192.168.99.1 - 192.168.99.6</td>
+  </tr>
+  <tr>
+    <td align="center">ISP-HQ</td>
+    <td align="center">172.16.4.0/28</td>
+    <td align="center">172.16.4.1 - 172.16.4.14</td>
+  </tr>
+  <tr>
+    <td align="center">ISP-BR</td>
+    <td align="center">172.16.5.0/28</td>
+    <td align="center">172.16.5.1 - 172.16.5.14</td>
+  </tr>
+</table>
+<p align="center"><strong>Таблица подсетей</strong></p>
+
+<br/>
+
+<table align="center">
+  <tr>
+    <td align="center">Имя устройства</td>
+    <td align="center">Интерфейс</td>
+    <td align="center">IPv4/IPv6</td>
+    <td align="center" >Маска/Префикс</td>
+    <td align="center">Шлюз</td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="3">ISP</td>
+    <td align="center">ens33</td>
+    <td align="center">10.12.28.5 (DHCP)</td>
+    <td align="center">/24</td>
+    <td align="center">10.12.28.254</td>
+  </tr>
+  <tr>
+    <td align="center">ens34</td>
+    <td align="center">172.16.5.1</td>
+    <td align="center">/28</td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center">ens35</td>
+    <td align="center">172.16.4.1</td>
+    <td align="center">/28</td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="3">HQ-RTR</td>
+    <td align="center">int0</td>
+    <td align="center">172.16.4.2</td>
+    <td align="center">/28</td>
+    <td align="center">172.16.4.1</td>
+  </tr>
+  <tr>
+    <td align="center">int1</td>
+    <td align="center">192.168.100.1</td>
+    <td align="center">/26</td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center">int2</td>
+    <td align="center">192.168.200.1</td>
+    <td align="center">/28</td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="2">BR-RTR</td>
+    <td align="center">int0</td>
+    <td align="center">172.16.5.2</td>
+    <td align="center">/28</td>
+    <td align="center">172.16.5.1</td>
+  </tr>
+  <tr>
+    <td align="center">int1</td>
+    <td align="center">192.168.0.1</td>
+    <td align="center">/27</td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center">HQ-SRV</td>
+    <td align="center">ens33</td>
+    <td align="center">192.168.100.62</td>
+    <td align="center">/26</td>
+    <td align="center">192.168.100.1</td>
+  </tr>
+  <tr>
+    <td align="center">BR-SRV</td>
+    <td align="center">ens33</td>
+    <td align="center">192.168.0.30</td>
+    <td align="center">/27</td>
+    <td align="center">192.168.0.1</td>
+  </tr>
+  <tr>
+    <td align="center">HQ-CLI</td>
+    <td align="center">ens33</td>
+    <td align="center">192.168.200.14</td>
+    <td align="center">/28</td>
+    <td align="center">192.168.200.1</td>
+  </tr>
+</table>
+<p align="center"><strong>Таблица адресации</strong></p>
+
+> Адресация для **ISP** взята из следующего задания
+
+<br/>
+
+#### Наcтройка IP-адресации на **HQ-SRV**, **BR-SRV**, **HQ-CLI** (настройка IP-адресации на **ISP** проводится в [следующем задании](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2))
+
+Приводим файлы **`options`**, **`ipv4address`**, **`ipv4route`** в директории **`/etc/net/ifaces/*имя интерфейса*/`** к следующему виду (в примере **HQ-SRV**):
+```yml
+DISABLED=no
+TYPE=eth
+BOOTPROTO=static
+CONFIG_IPV4=yes
+```
+> **`options`**
+
+```yml
+192.168.100.62/26
+```
+> **`ipv4address`**
+
+```yml
+default via 192.168.100.1
+```
+> **`ipv4route`**
+
+<br/>
+
+#### Настройка IP-адресации на EcoRouter
+
+Настраиваем интерфейс на **HQ-RTR**, который смотрит в сторону **ISP**:
+
+- Создаем логический интерфейс:
+```yml
+interface int0
+  description "to isp"
+  ip address 172.16.4.2/28
+```
+
+- Настраиваем физический порт:
+```yml
+port ge0
+  service-instance ge0/int0
+    encapsulation untagged
+```
+
+- Объединеняем порт с интерфейсом:
+```yml
+interface int0
+  connect port ge0 service-instance ge0/int0
+```
+
+<br/>
+
+Настраиваем интерфейсы на **HQ-RTR**, которые смотрят в сторону **HQ-SRV** и **HQ-CLI** (с разделением на VLAN):
+
+- Создаем два интерфейса:
+```yml
+interface int1
+  description "to hq-srv"
+  ip address 192.168.100.1/26
+!
+interface int2
+  description "to hq-cli"
+  ip address 192.168.200.1/28
+```
+
+- Настраиваем порт:
+```yml
+port ge1
+  service-instance ge1/int1
+    encapsulation dot1q 100
+    rewrite pop 1
+  service-instance ge1/int2
+    encapsulation dot1q 200
+    rewrite pop 1
+```
+
+- Объединяем порт с интерфейсами:
+```yml
+interface int1
+  connect port ge1 service-instance ge1/int1
+!
+interface int2
+  connect port ge1 service-instance ge1/int2
+```
+
+<br/>
+
+#### Адресация на BR-RTR (без разделения на VLAN) настраивается аналогично примеру выше
+
+<br/>
+
+#### Добавление маршрута по умолчанию в EcoRouter
+
+Прописываем следующее:
+```yml
+ip route 0.0.0.0 0.0.0.0 *адрес шлюза*
+```
 
 </details>
 
@@ -56,21 +318,19 @@
 
 ## Задание 2
 
-### Сконфигурируйте файловое хранилище
+### Настройка ISP
 
-- При помощи трех дополнительных дисков, размером 1Гб каждый, на HQ-SRV сконфигурируйте дисковый массив уровня 5
+- Настройте адресацию на интерфейсах:
 
-- Имя устройства - md0, конфигурация массива размещается в файле /etc/mdadm.conf
+  - Интерфейс, подключенный к магистральному провайдеру, получает адрес по DHCP
 
-- Обеспечьте автоматическое монтирование в папку /raid5
+  - Настройте маршруты по умолчанию там, где это необходимо
 
-- Создайте раздел, отформатируйте раздел, в качестве файловой системы используйте ext4
+  - Интерфейс, к которому подключен HQ-RTR, подключен к сети 172.16.4.0/28
 
-- Настройте сервер сетевой файловой системы (nfs), в качестве папки общего доступа выберите /raid5/nfs, доступ для чтения и записи для всей сети в сторону HQ-CLI
+  - Интерфейс, к которому подключен BR-RTR, подключен к сети 172.16.5.0/28
 
-- На HQ-CLI настройте автомонтирование в папку /mnt/nfs
-
-- Основные параметры сервера отметьте в отчете
+  - На ISP настройте динамическую сетевую трансляцию в сторону HQ-RTR и BR-RTR для доступа к сети Интернет
 
 <br/>
 
@@ -78,242 +338,69 @@
 <summary>Решение</summary>
 <br/>
 
-#### Создание RAID
+#### Настройка интерфейса, который получает IP-адрес по DHCP
 
-Просматриваем имена добавленных дисков:
+Файл **`options`** (в директории интерфейса) приводим к следующему виду:
 ```yml
-lsblk
+BOOTPROTO=dhcp
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
 ```
-> Вывод:
-> ```yml
-> sdb  8:16  0  1G  0  disk
-> sdc  8:32  0  1G  0  disk
-> sdd  8:48  0  1G  0  disk
-> ```
+> **`BOOTPROTO=dhcp`** - заменили статический способ настройки адреса на динамическое получение
 
 <br/>
 
-Обнуляем суперблоки для добавленных дисков:
-```yml
-mdadm --zero-superblock --force /dev/sd{b,c,d}
-```
-> Вывод:
-> ```yml
-> mdadm: Unrecongised md component device - /dev/sdx
-> ```
-> > Гласит о том, что диски не использовались ранее для **RAID**
+#### Настройка маршрута по умолчанию
 
-<br/>
-
-Удаляем старые метаданные и подпись на дисках:
+Прописываем шлюз по умолчанию:
 ```yml
-wipefs --all --force /dev/sd{b,c,d}
+default via *адрес шлюза*
 ```
 
 <br/>
 
-Создаем **RAID**:
-```yml
-mdadm --create /dev/md0 -l 5 -n 3 /dev/sd{b,c,d}
-```
-> **/dev/md0** - название RAID после сборки
->
-> **-l 5** - уровень RAID
->
-> **-n 3** - количество дисков, из которых собирается массив
->
-> **/dev/sd{b,c,d}** - диски, из которых выполняется сборка
+#### Настройка интерфейсов, смотрящих в сторону HQ-RTR и BR-RTR происходит аналогично настройке в [Задании 1](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)
 
 <br/>
 
-Проверяем:
-```yml
-lsblk
-```
-> Вывод:
-> ```yml
-> sdb  8:16  0  1G  0  disk
->   md0  9:0  0  2G  0  raid5
-> sdc  8:32  0  1G  0  disk
->   md0  9:0  0  2G  0  raid5
-> sdd  8:48  0  1G  0  disk
->   md0  9:0  0  2G  0  raid5
-> ```
+#### Включение маршрутизации
 
-<br/>
-
-Создаем файловую систему из созданного **RAID**:
+В файле **`/etc/net/sysctl.conf`** изменяем строку:
 ```yml
-mkfs -t ext4 /dev/md0
+net.ipv4.ip_forward = 1
 ```
 
 <br/>
 
-#### Создание файла `mdadm.conf`
-
-Создаем директорию для файла:
+Изменения в файле **`sysctl.conf`** применяем следующей командой:
 ```yml
-mkdir /etc/mdadm
+sysctl -p /etc/sysctl.conf
 ```
 
-<br/>
-
-Заполняем файл информацией:
-```yml
-echo "DEVICE partitions" > /etc/mdadm/mdadm.conf
-mdadm --detail --scan | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
-```
-
-<br/>
-
-#### Создание файловой системы и монтирование RAID-массива
-
-Создаем директорию для монтирования массива:
-```yml
-mkdir /mnt/raid5
-```
-
-<br/>
-
-Добавляем строку в **`/etc/fstab`**:
-```yml
-/dev/md0  /mnt/raid5  ext4  defaults  0  0
-```
-
-<br/>
-
-Монтируем:
-```yml
-mount -a
-```
-
-<br/>
-
-Проверяем монтирование:
-```yml
-df -h
-```
-> Вывод:
-> ```yml
-> /dev/md0  2.0G  24K  1.9G  1%  /mnt/raid5
-> ```
-
-<br/>
-
-#### Настройка NFS
-
-Устанавливаем пакеты для **NFS-сервера**:
-```yml
-apt-get install -y nfs-{server,utils}
-```
-
-<br/>
-
-Создаем директорию для общего доступа:
-```yml
-mkdir /mnt/raid5/nfs
-```
-
-<br/>
-
-Выдаем права на чтение и запись этой директории:
-```yml
-chmod 766 /mnt/raid5/nfs
-```
-
-<br/>
-
-Добавляем строку в **`/etc/exports`**:
-```yml
-/mnt/raid5/nfs 192.168.200.0/28(rw,no_root_squash)
-```
-> **/mnt/raid5/nfs** - общий ресурс
->
-> **192.168.200.0/28** - клиентская сеть, которой разрешено монтирование общего ресурса
->
-> **rw** — разрешены чтение и запись
->
-> **no_root_squash** — отключение ограничения прав **root**
-
-<br/>
-
-Экспортируем файловую систему, которую прописали ранее:
-```yml
-exportfs -arv
-```
-> **-a** - экспортировать все указанные каталоги
->
-> **-r** - повторный экспорт всех каталогов, синхронизируя **/var/lib/nfs/etab** с **/etc/exports** и файлами в **/etc/exports.d**
->
-> **-v** - подробный вывод
-
-<br/>
-
-Запускаем и добавляем в автозагрузку **NFS-сервер**:
-```yml
-systemctl enable --now nfs-server
-```
-
-<br/>
-
-#### Настройка клиента
-
-Устанавливаем требуемые пакеты для **NFS-клиента**:
-```yml
-apt-get update && apt-get install -y nfs-{utils,clients}
-```
-
-<br/>
-
-Создаем директорию для общего ресурса:
-```yml
-mkdir /mnt/nfs
-```
-
-<br/>
-
-Выдаем права этой директории:
-```yml
-chmod 777 /mnt/nfs
-```
-
-<br/>
-
-Добавляем строку в **`/etc/fstab`** для автоматического монтирования общего ресурса:
-```yml
-192.168.100.62:/mnt/raid5/nfs  /mnt/nfs  nfs  defaults  0  0
-```
-
-<br/>
-
-Монтируем общий ресурс:
-```yml
-mount -a
-```
-
-<br/>
-
-Проверяем монтирование:
-```yml
-df -h
-```
-> Вывод:
-> ```yml
-> 192.168.100.62:/mnt/raid5/nfs  2,0G  0  1,9G  0%  /mnt/nfs
-> ```
 </details>
 
 <br/>
 
 ## Задание 3
 
-### Настройте службу сетевого времени на базе сервиса chrony
+### Создание локальных учетных записей
 
-- В качества сервера выступает HQ-RTR
+- Создайте пользователя sshuser на серверах HQ-SRV и BR-SRV
 
-- На HQ-RTR настройте сервер chrony, выберите стратум 5
+  - Пароль пользователя sshuser с паролем P@ssw0rd
 
-- В качестве клиентов настройте HQ-SRV, HQ-CLI, BR-RTR, BR-SRV
+  - Идентификатор пользователя 1010
+
+  - Пользователь sshuser должен иметь возможность запускать sudo без дополнительной аутентификации.
+
+- Создайте пользователя net_admin на маршрутизаторах HQ-RTR и BR-RTR
+
+  - Пароль пользователя net_admin с паролем P@$$word
+
+  - При настройке на EcoRouter пользователь net_admin должен обладать максимальными привилегиями
+
+  - При настройке ОС на базе Linux, запускать sudo без дополнительной аутентификации
 
 <br/>
 
@@ -321,141 +408,59 @@ df -h
 <summary>Решение</summary>
 <br/>
 
-**Так как на HQ-RTR нет утилиты chrony и возможность выбора стратума, NTP-сервером будет выступать ISP**
+#### Создание пользователя `sshuser` на серверах
 
-#### Конфигурация NTP-сервера (ISP)
-
-Скачиваем пакет **chrony**:
+Создаем самого пользователя:
 ```yml
-apt-get install -y chrony
+useradd sshuser -u 1010
+```
+> опция **`-u`** позволяет указать идентификатор пользователя сразу при создании
+
+<br/>
+
+Задаем пароль:
+```yml
+passwd sshuser
 ```
 
 <br/>
 
-Приводим начало файла **`/etc/chrony.conf`** к следующему виду:
+Добавляем в группу **wheel**:
 ```yml
-# Use public servers from the pool.ntp.org project.
-# Please consider joining the pool (https://www.pool.ntp.org/join.html
-#pool pool.ntp.org iburst
-
-server 127.0.0.1 iburst prefer
-hwtimestamp *
-local stratum 5
-allow 0/0
-```
-> **server 127.0.0.1** - указываем сервером синхронизации самого себя
-> > **iburst** - принудительно отправляет пакеты для точности синхронизации
-> > 
-> > **prefer** - отдает приоритет этому серверу
->
-> **hwtimestamp** * - указывает сетевой интерфейс как собственный источник времени и синхронизирует клиентов с ним
->
-> **local stratum 5** - указание иерархического уровня
->
-> **allow 0/0** - разрешает подключение с любого IP-адреса
-
-<br/>
-
-Запускаем и добавляем в автозагрузку утилиту **chronyd**:
-```yml
-systemctl enable --now chronyd
+usermod -aG wheel sshuser
 ```
 
 <br/>
 
-#### Проверка конфигурации NTP-сервера
-
-Получаем вывод источников времени с помощью команды:
+Добавляем строку в **`/etc/sudoers`**:
 ```yml
-chronyc sources
+sshuser ALL=(ALL) NOPASSWD:ALL
 ```
-> Вывод:
-> ```yml
-> MS Name/IP address        Stratum  Poll  Reach  LastRx  Last  sample
-> =============================================================================
-> ^/ localhost.localdomain  0        8     377    -       +0ns[  +0ns] +/-  0ns
-> ```
+> Позволяет запускать **sudo** без аутентификации 
 
 <br/>
 
-Получаем вывод **уровня стратума** с помощью связки команд:
+#### Создание пользователя `net_admin` на Ecorouter
+
+Создаем самого пользователя:
 ```yml
-chronyc tracking | grep Stratum
-```
-> Вывод:
-> ```yml
-> Stratum: 5
-> ```
-
-<br/>
-
-#### Конфигурация NTP-клиента EcoRouter
-
-Указываем IP-адрес **NTP-сервера**:
-```yml
-ntp server 172.16.4.1
+username net_admin
 ```
 
 <br/>
 
-Указываем часовой пояс:
+Задаем пароль:
 ```yml
-ntp timezone utc+5
+password P@ssw0rd
 ```
 
 <br/>
 
-#### Проверка конфигурации NTP-клиента EcoRouter
-
-Проверяем командой:
+Присваиваем привилегии администратора:
 ```yml
-show ntp status
-```
-> Вывод:
-> ```yml
-> Status Description
-> *      best
-> +      sync
-> -      failed
-> ?      unknown
->
-> ----------------------------------------------------------------------------------------------------
-> Status  |  VR name  |  Server  |  Stratum  |  Delay  |  Version  |  Offset  |  Last  |  Source IP
-> ----------------------------------------------------------------------------------------------------
->        *|    default|172.16.4.1|          5|   0.0391|          4|    0.0036|    3:26|        
-
-<br/>
-
-#### Конфигурация NTP-клиента Alt Linux
-
-Скачиваем пакет **chrony**:
-```yml
-apt-get install chrony
+role admin
 ```
 
-<br/>
-
-Приводим начало файла **`/etc/chrony.conf`** к следующему виду:
-```yml
-#pool pool.ntp.org iburst
-server 172.16.4.1 iburst prefer
-```
-> **iburst** - принудительно отправляет пакеты для точности синхронизации
->
-> **prefer** - отдает приоритет этому серверу
-
-<br/>
-
-Запускаем утилиту **chrony** и добавляем ее в автозагрузку:
-```yml
-systemctl enable --now chronyd
-```
-
-<br/>
-
-#### Проверка конфигурации NTP-клиента Alt Linux
-
-Проверка NTP-клиента на Alt Linux аналогична **[проверке NTP-сервера на Alt Linux](https://github.com/damh66/demo2025/tree/main/module2#%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8-ntp-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0)**
 
 </details>
 
@@ -463,113 +468,20 @@ systemctl enable --now chronyd
 
 ## Задание 4
 
-### Сконфигурируйте ansible на сервере BR-SRV
+### Настройте на интерфейсе HQ-RTR в сторону офиса HQ виртуальный коммутатор
 
-- Сформируйте файл инвентаря, в инвентарь должны входить HQ-SRV, HQ-CLI, HQ-RTR и BR-RTR
-
-- Рабочий каталог ansible должен располагаться в /etc/ansible
-
-- Все указанные машины должны без предупреждений и ошибок отвечать pong на команду ping в ansible посланную с BR-SRV
+- Сервер HQ-SRV должен находиться в ID VLAN 100
+- Клиент HQ-CLI в ID VLAN 200
+- Создайте подсеть управления с ID VLAN 999
+- Основные сведения о настройке коммутатора и выбора реализации разделения на VLAN занесите в отчёт
 
 <br/>
 
 <details>
-<summary>Решение</summary>
+<summary>Не решено</summary>
 <br/>
 
-#### Конфигурация SSH Alt Linux
 
-Затронутые строки в конфигурационном файле **SSH** **`/etc/openssh/sshd_config`** должны выглядеть следующим образом:
-```yml
-Port 2024
-MaxAuthTries 2
-PubkeyAuthentication yes
-PasswordAuthentication yes
-Banner /etc/openssh/bannermotd
-AllowUsers  sshuser
-```
-> Первоначальная настройка **SSH** производилась в задании **[Настройка безопасного удаленного доступа на серверах HQ-SRV и BR-SRV](https://github.com/damh66/demo2025/tree/main/module1#%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-5)** из **[Модуля 1](https://github.com/damh66/demo2025/tree/main/module1#demo2025---%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C-1)**
-
-<br/>
-
-#### Конфигурация Ansible
-
-Устанавливаем необходимые пакеты:
-```yml
-apt-get install -y ansible sshpass
-```
-
-<br/>
-
-Редактируем указанные строки в **конфигурационном файле `/etc/ansible/ansible.cfg`**:
-```yml
-inventory = ./inventory.yml
-host_key_checking = False
-```
-> **inventory = ./inventory.yml** - путь до инвентарного файла
->
-> **host_key_checking = False** - отключение проверки ключа хоста
-
-<br/>
-
-Далее заполняем **инвентарный файл `/etc/ansible/inventory.yml`**:
-```yml
-all:
-  children:
-    Networking:
-      hosts:
-        hq-rtr:
-        br-rtr:
-    Servers:
-      hosts:
-        hq-srv:
-          ansible_host: 192.168.100.62
-          ansible_port: 2024
-    Clients:
-      hosts:
-        hq-cli:
-          ansible_host: 192.168.200.14
-          ansible_port: 2024
-```
-
-<br/>
-
-Создаем файлы с переменными для **всех категорий** и для категории **Networking**:
-```yml
-cd /etc/ansible
-mkdir group_vars
-touch group_vars/{all.yml,Networking.yml}
-```
-
-<br/>
-
-Редактируем их:
-```yml
-ansible_ssh_user: sshuser
-ansible_ssh_pass: P@ssw0rd
-ansible_python_interpreter: /usr/bin/python3
-```
-> all.yml
-
-```yml
-ansible_connection: network_cli
-ansible_network_os: ios
-```
-> Networking.yml
-
-<br/>
-
-Выполняем команду для **ping**`а всех машин:
-```yml
-ansible -m ping all
-```
-> **-m (--module-name)** - параметр для указания модуля
->
-> **ping** - модуль
->
-> **all** - выполнить модуль для всех виртуальных машин, указанных в инвентарном файле
-
-<br/>
 
 </details>
 
@@ -577,222 +489,43 @@ ansible -m ping all
 
 ## Задание 5
 
-### Развертывание приложений в Docker на сервере BR-SRV
+### Настройка безопасного удаленного доступа на серверах HQ-SRV и BR-SRV
 
-- Создайте в домашней директории пользователя файл wiki.yml для приложения MediaWiki
-
-- Средствами docker compose должен создаваться стек контейнеров с приложением MediaWiki и базой данных
-
-- Используйте два сервиса
-
-- Основной контейнер MediaWiki должен называться wiki и использовать образ mediawiki
-
-- Файл LocalSettings.php с корректными настройками должен находиться в домашней папке пользователя и автоматически монтироваться в образ
-
-- Контейнер с базой данных должен называться mariadb и использовать образ mariadb
-
-- Разверните
-
-- Он должен создавать базу с названием mediawiki, доступную по стандарнтому порту, пользователя wiki с паролем WikiP@ssw0rd должен иметь права доступа к этой базе данных
-
-- MediaWiki должна быть доступна извне через порт 8080
+- Для подключения используйте порт 2024
+- Разрешите подключения только пользователю sshuser
+- Ограничьте количество попыток входа до двух
+- Настройте баннер «Authorized access only»
 
 <br/>
 
 <details>
-<summary>Решено не полностью (проблема в учетной записи пользователя базы данных)</summary>
+<summary>Решение</summary>
 <br/>
 
-#### Конфигурация файла Docker-Compose
-
-Останавливаем службу **ahttpd**, которая занимает порт **8080**:
+Приводим указанные строки в файле **`/etc/openssh/sshd_config`** к следующим значениям:
 ```yml
-systemctl disable —now ahttpd
+Port 2024
+MaxAuthTries 2
+PasswordAuthentication yes
+Banner /etc/openssh/bannermotd
+AllowUsers  sshuser
 ```
-> **ahttpd** - модуль для веб-интерфейса, который предназначен для управления настройками web-сервера, обеспечивающего работоспособность **Центра управления системой**
+> В параметре **AllowUsers** вместо пробела используется **`Tab`**
 
 <br/>
 
-Устанавливаем **docker** и **docker-compose**:
+Создаем файл **`bannermotd`**:
 ```yml
-apt-get install -y docker-{ce,compose}
-```
-
-<br/>
-
-Включаем и добавляем в автозагрузку **docker**:
-```yml
-systemctl enable --now docker
+----------------------
+Authorized access only
+----------------------
 ```
 
 <br/>
 
-В домашней директории пользователя создаем файл **`wiki.yml`** и прописываем следующее:
+Перезагружаем службу:
 ```yml
-services:
-  mediawiki:
-    container_name: wiki
-    image: mediawiki
-    restart: always
-    ports:
-      - "8080:80"
-    links:
-      - db
-#    volumes:
-#      - ./LocalSettings.php:/var/www/html/LocalSettings.php
-
-  db:
-    container_name: mariadb
-    image: mariadb
-    restart: always
-    environment:
-      MARIADB_DATABASE: mediawiki
-      MARIADB_USER: wiki
-      MARIADB_PASSWORD: WikiP@ssw0rd
-      MARIADB_ROOT_PASSWORD: P@ssw0rd
-    volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:
-```
-> **services** - основной раздел, в котором описываются сервисы
->
-> **container_name** - имя контейнера
->
-> **image** - имя образа
->
-> **restart** - перезапуск контейнера, если он остановлен
->
-> **ports** - проброс портов
->
-> **links** - ссылка на контейнер
-> 
-> **volumes** - проброс папок
->
-> **environment** - переменные окружения
-
-<br/>
-
-Собираем стек контейнеров:
-```yml
-docker compose -f wiki.yml up -d
-```
-> **-f** - указание на файл
->
-> **up** - запуск
->
-> **-d** - запуск в фоновом режиме
-
-<br/>
-
-#### Установка MediaWiki в веб-интерфейсе
-
-На **HQ-CLI** в браузере вводим **`http://192.168.0.30:8080`** и начинаем установку **MediaWiki**, нажав на **set up the wiki**:
-<p align="center">
-  <img width="600" src="https://github.com/user-attachments/assets/d396a8fb-486e-4cdf-96b2-d7233b5e81f3"
-</p>
-
-<br/>
-
-Выбираем язык:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/c59c1003-75e6-4dbb-bfa2-9808fa31d51f"
-</p>
-
-<br/>
-
-Проверяем внешнюю среду и нажимаем **далее**:
-<p align="center">
-  <img width="600" src="https://github.com/user-attachments/assets/b09a45e6-eb92-4d8f-b2c4-4a280352bdf0"
-</p>
-
-<br/>
-
-Заполняем параметры для базы данных в соответствии с заданными переменными окружения в **wiki.yml**:
-<p align="center">
-  <img width="250" src="https://github.com/user-attachments/assets/edbfc738-5406-4d3f-a73f-9cdad1f15398"
-</p>
-
-<br/>
-
-Оставляем галочку и жмем **далее**:
-<p align="center">
-  <img width="550" src="https://github.com/user-attachments/assets/2ebdc0e0-027d-4aff-9d00-4c1b4e38c358"
-</p>
-
-<br/>
-
-Заполняем информацию об учетной записи администратора:
-<p align="center">
-  <img width="500" src="https://github.com/user-attachments/assets/0b60037a-7e9f-4f0f-9290-a4d0b2f457fb"
-</p>
-
-<br/>
-
-Подтверждаем установку **MediaWiki**:
-<p align="center">
-  <img width="500" src="https://github.com/user-attachments/assets/d338a392-ce13-414c-ba16-2e45743d1d4f"
-</p>
-
-<br/>
-
-После окончания установки нажимаем **далее**:
-<p align="center">
-  <img width="450" src="https://github.com/user-attachments/assets/158beb5a-9715-46cc-8af5-1e3e0b05176d"
-</p>
-
-<br/>
-
-Получаем конфигурационный файл, который нужно передать на **BR-SRV**:
-<p align="center">
-  <img width="800" src="https://github.com/user-attachments/assets/923ad086-0244-4b4b-be83-1973c193f355"
-</p>
-
-<br/>
-
-#### Правка файла Docker-Compose
-
-Перемещаем файл **`LocalSettings.php`** в домашнюю директорию пользователя **sshuser**:
-```yml
-mv /home/user/Загрузки/LocalSettings.php /home/sshuser
-```
-> В моем случае, ранние действия выполнялись из под пользователя **user**, поэтому загруженный файл оказался именно в его папке
-
-<br/>
-
-Передаем файл с **HQ-CLI** на **BR-SRV**:
-```yml
-scp -P 2024 /home/sshuser/LocalSettings.php sshuser@192.168.0.30:/home/sshuser
-```
-> **-P** - указание порта SSH
->
-> **/home/sshuser/LocalSettings.php** - файл, который будет передан
->
-> **sshuser@192.168.0.30:/home/sshuser** - имя-пользователя@IP-адрес:директория-назначения
-
-<br/>
-
-На **BR-SRV** перемещаем файл в домашнюю директорию **root**:
-```yml
-mv /home/sshuser/LocalSettings.php /root
-```
-> Если файл **wiki.yml** создавали в домашней директории другого пользователя - перемещаем туда
-
-<br/>
-
-В файле **wiki.yml** расскоментируем следующие строки:
-```yml
-volumes:
-  - ./LocalSettings.php:/var/www/html/LocalSettings.php
-```
-
-<br/>
-
-Перезапускаем запущенные **Docker**`ом сервисы:
-```yml
-docker compose -f wiki.yml stop
-docker compose -f wiki.yml up -d
+systemctl restart sshd
 ```
 
 </details>
@@ -801,13 +534,11 @@ docker compose -f wiki.yml up -d
 
 ## Задание 6
 
-### На маршрутизаторах сконфигурируйте статическую трансляцию портов
+### Между офисами HQ и BR необходимо сконфигурировать IP-туннель
 
-- Пробросьте порт 80 в порт 8080 на BR-SRV на маршрутизаторе BR-RTR, для обеспечения работы сервиса wiki
+- Сведения о туннеле занесите в отчёт
 
-- Пробросьте порт 2024 в порт 2024 на HQ-SRV на маршрутизаторе HQ-RTR
-
-- Пробросьте порт 2024 в порт 2024 на BR-SRV на маршрутизаторе BR-RTR
+- На выбор технологии GRE или IP in IP
 
 <br/>
 
@@ -815,28 +546,38 @@ docker compose -f wiki.yml up -d
 <summary>Решение</summary>
 <br/>
 
-#### Конфигурация BR-RTR
+#### Создание туннеля на HQ-RTR
 
-Проброс портов с 80 на 8080 для работы сервиса **wiki**:
+Создаем интерфейс **GRE**-туннеля на **HQ-RTR**:
 ```yml
-ip nat source static tcp 192.168.0.1 80 192.168.0.30 8080
+int tunnel.0
 ```
 
 <br/>
 
-Проброс портов с 2024 на 2024:
+Назначаем **IP-адрес**:
 ```yml
-ip nat source static tcp 192.168.0.1 2024 192.168.0.30 2024
+ip add 172.16.0.1/30
 ```
 
 <br/>
 
-#### Конфигурация HQ-RTR
-
-Проброс портов с 2024 на 2024:
+Выставляем параметр **MTU**:
 ```yml
-ip nat source static tcp 192.168.100.1 2024 192.168.100.62 2024
+ip mtu 1400
 ```
+> В связи с добавлением служебного заголовка появляются новые требования к допустимому значению MTU при передаче пакета. Заголовок GRE имеет размерность 4 байта, 20 байт транспортный IP заголовок, заголовок IP пакета 20 байт, таким образом возникает необходимость задавать размер допустимого MTU на интерфейсах туннеля меньше стандартного значения.
+
+<br/>
+
+Задаем режим работы туннеля **GRE** и адреса **начала** и **конца** туннеля:
+```yml
+ip tunnel 172.16.4.2 172.16.5.2 mode gre
+```
+
+<br/>
+
+#### GRE-туннель на BR-RTR настраивается аналогично примеру выше
 
 </details>
 
@@ -844,21 +585,15 @@ ip nat source static tcp 192.168.100.1 2024 192.168.100.62 2024
 
 ## Задание 7
 
-### Запустите сервис moodle на сервере HQ-SRV
+### Обеспечьте динамическую маршрутизацию: ресурсы одного офиса должны быть доступны из другого офиса. Для обеспечения динамической маршрутизации используйте link state протокол на ваше усмотрение
 
-- Используйте веб-сервер apache
+- Разрешите выбранный протокол только на интерфейсах в ip туннеле
 
-- В качестве системы управления базами данных используйте mariadb
+- Маршрутизаторы должны делиться маршрутами только друг с другом
 
-- Создайте базу данных moodledb
+- Обеспечьте защиту выбранного протокола посредством парольной защиты
 
-- Создайте пользователя moodle с паролем P@ssw0rd и предоставьте ему права доступа к этой базе данных
-
-- У пользователя admin в системе обучения задайте пароль P@ssw0rd
-
-- На главной странице должен отражаться номер рабочего места в виде арабской цифры, других подписей делать не надо
-
-- Основные параметры отметьте в отчеты
+- Сведения о настройке и защите протокола занесите в отчёт
 
 <br/>
 
@@ -866,145 +601,520 @@ ip nat source static tcp 192.168.100.1 2024 192.168.100.62 2024
 <summary>Решение</summary>
 <br/>
 
-#### Конфигурация базы данных
+#### Настройка OSPF на HQ-RTR
 
-Устанавливаем необходимые пакеты:
+Создаем процесс **OSPF**, указываем **идентификатор маршрутизатора**, объявляем сети и указываем **пассивные** интерфейсы:
 ```yml
-apt-get install -y moodle moodle-apache2 moodle-base moodle-local-mysql phpMyAdmin
+router ospf 1
+  router-id 1.1.1.1
+  network 172.16.0.0/30 area 0
+  network 192.168.100.0/26 area 0
+  network 192.168.200.0/28 area 0
+  passive-interface default
+  no passive-interface tunnel.0
 ```
 
 <br/>
 
-Добавляем в **автозагрузку** базу данных:
-```yml
-systemctl enable --now mysqld
-```
-
-<br/>
-
-Задаем пароль для пользователя **root** в базе данных:
-```yml
-mysqladmin password 'P@ssw0rd'
-```
-
-<br/>
-
-Редактируем настройки **веб-сервера**:
-```yml
-cat /etc/httpd2/conf/include/Directory_moodle_default.conf | grep 'Require all granted' || sed -i '/AllowOverride None/a Require all granted' /etc/httpd2/conf/include/Directory_moodle_default.conf
-```
-
-<br/>
-
-Изменяем строку, отвечающую за количество входных переменных:
-```yml
-sed -i 's/; max_input_vars = 1000/max_input_vars = 5000/g' /etc/php/8.2/apache2-mod_php/php.ini
-```
-
-<br/>
-
-Добавляем в **автозагрузку** веб-сервер:
-```yml
-systemctl enable --now httpd2
-```
-
-<br/>
-
-Авторизуемся в **MySQL**:
-```yml
-mysql -u root -p
-```
-> Вводим ранее указанный пароль
-
-<br/>
-
-Создаем **пользователя** для базы данных:
-```yml
-create user 'moodle'@'localhost' identified by 'P@ssw0rd';
-```
-
-<br/>
-
-Создаем базу данных:
-```yml
-create database moodledb default character set utf8 collate utf8_unicode_ci;
-```
-
-<br/>
-
-Выдаем **права** пользователю на созданную базу данных:
-```yml
-grant all privileges on moodledb.* to moodle@localhost;
-```
-
-<br/>
-
-Переходим на **`hq-srv.au-team.irpo/moodle`** и выбираем язык:
-<p align="center">
-  <img width="600" src="https://github.com/user-attachments/assets/0e8cdfda-6466-416e-afab-e7f61fcf1b3a"
-</p>
-
-<br/>
-
-Подтверждаем пути директорий:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/548b1126-3b5a-4104-a692-b0aafdd0617a"
-</p>
-
-<br/>
-
-Выбираем систему управления базы данных:
-<p align="center">
-  <img width="300" src="https://github.com/user-attachments/assets/d21aa42f-8988-44f6-bcab-67e0fa9cae08"
-</p>
-
-<br/>
-
-Заполняем данные о базе данных и пользователе:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/1c5414a6-5aba-4ffd-8d4a-32e49bcb770b"
-</p>
-
-<br/>
-
-Соглашаемся с условиями:
-<p align="center">
-  <img width="300" src="https://github.com/user-attachments/assets/055ed45c-f87c-44ec-9f3e-0f32737f38c7"
-</p>
-
-<br/>
-
-Убеждаемся в успешной проверке:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/7ddc9e35-3c96-4623-94d0-9f57e2803b3c"
-</p>
-
-<br/>
-
-После установки настраиваем учетную запись администратора:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/337888dc-1542-4bdd-90c2-b43dcf14e7fa"
-</p>
-
-> Заполняем в соответствии с условиями задания
-
-<br/>
-
-Указываем название сайта, часовой пояс и электронную почту:
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/494d4a54-dad8-4e60-adc8-f415671bef4a"
-</p>
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/eca69476-dedd-4fc6-9198-4c7c27d7a428"
-</p>
-
-<br/>
-
-После успешного создания попадаем на главную страницу:
-<p align="center">
-  <img width="600" src="https://github.com/user-attachments/assets/9ae25d22-7cf0-4b8c-8fd9-c1f538679d82"
-</p>
+#### Маршрутизация OSPF на BR-RTR настраивается аналогично примеру выше
 
 </details>
 
 <br/>
+
+## Задание 8
+
+### Настройка динамической трансляции адресов
+
+- Настройте динамическую трансляцию адресов для обоих офисов.
+
+- Все устройства в офисах должны иметь доступ к сети Интернет
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+#### Настройка NAT на ISP
+
+Добавляем правила **`iptables`** на ISP
+```yml
+iptables -t nat -A POSTROUTING -o ens224 -s 172.16.4.0/28 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o ens224 -s 172.16.5.0/28 -j MASQUERADE
+```
+
+<br/>
+
+Сохраняем правила:
+```yml
+iptables-save > /etc/sysconfig/iptables
+```
+
+<br/>
+
+Включаем и добавляем **`iptables`** в автозагрузку:
+```yml
+systemctl enable --now iptables
+```
+
+<br/>
+
+#### Настройка NAT на HQ-RTR
+
+Указываем **внутренние** и **внешние** интерфейсы:
+```yml
+int int1
+  ip nat inside
+!
+int int2
+  ip nat inside
+!
+int int0
+  ip nat outside
+```
+
+<br/>
+
+Создаем пул:
+```yml
+ip nat pool NAT_POOL 192.168.100.1-192.168.100.62,192.168.200.1-192.168.200.14
+```
+
+<br/>
+
+Создаем **правило** трансляции адресов, указывая внешний интерфейс:
+```yml
+ip nat source dynamic inside-to-outside pool NAT_POOL overload interface int0
+```
+
+<br/>
+
+#### Настройка NAT на BR-RTR
+
+Конфигурация:
+```yml
+int int1
+  ip nat inside
+!
+int int0
+  ip nat outside
+!
+ip nat pool NAT_POOL 192.168.0.1-192.168.0.30
+!
+ip nat source dynamic inside-to-outside pool NAT_POOL overload interface int0
+```
+
+</details>
+
+<br/>
+
+## Задание 9
+
+### Настройка протокола динамической конфигурации хостов
+
+- Настройте нужную подсеть
+
+- Для офиса HQ в качестве сервера DHCP выступает маршрутизатор HQ-RTR.
+
+- Клиентом является машина HQ-CLI.
+
+- Исключите из выдачи адрес маршрутизатора
+
+- Адрес шлюза по умолчанию – адрес маршрутизатора HQ-RTR.
+
+- Адрес DNS-сервера для машины HQ-CLI – адрес сервера HQ-SRV.
+
+- DNS-суффикс для офисов HQ – au-team.irpo
+
+- Сведения о настройке протокола занесите в отчёт
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+Создаем **пул** для **DHCP-сервера**:
+```yml
+ip pool hq-cli 192.168.200.14-192.168.200.14
+```
+
+<br/>
+
+Настраиваем сам **DHCP-сервер**:
+```yml
+dhcp-server 1
+  pool hq-cli 1
+    mask 28
+    gateway 192.168.200.1
+    dns 192.168.100.62
+    domain-name au-team.irpo
+```
+> **`pool hq-cli 1`** - привязка **пула**
+
+> **`mask 28`** - указание **маски** для выдаваемых адресов из пула
+
+> **`gateway 192.168.200.1`** - указание **шлюза по умолчанию** для клиентов
+
+> **`dns 192.168.100.62`** - указание **DNS-сервера** для клиентов
+
+> **`domain-name au-team.irpo`** - указание **DNS-суффикса** для офиса **HQ**
+
+<br/>
+
+Привязываем **DHCP-сервер** к интерфейсу (смотрящий в сторону **CLI**):
+```yml
+interface int2
+  dhcp-server 1
+```
+
+</details>
+
+<br/>
+
+## Задание 10
+
+### Настройка DNS для офисов HQ и BR
+
+- Основной DNS-сервер реализован на HQ-SRV.
+
+- Сервер должен обеспечивать разрешение имён в сетевые адреса устройств и обратно в соответствии с таблицей 2
+
+- В качестве DNS сервера пересылки используйте любой общедоступный DNS сервер
+
+<br/>
+
+<table align="center">
+  <tr>
+    <td align="center">Устройство</td>
+    <td align="center">Запись</td>
+    <td align="center">Тип</td>
+  </tr>
+  <tr>
+    <td align="center">HQ-RTR</td>
+    <td align="center">hq-rtr.au-team.irpo</td>
+    <td align="center">A,PTR</td>
+  </tr>
+  <tr>
+    <td align="center">BR-RTR</td>
+    <td align="center">br-rtr.au-team.irpo</td>
+    <td align="center">A</td>
+  </tr>
+  <tr>
+    <td align="center">HQ-SRV</td>
+    <td align="center">hq-srv.au-team.irpo</td>
+    <td align="center">A,PTR</td>
+  </tr>
+  <tr>
+    <td align="center">HQ-CLI</td>
+    <td align="center">hq-cli.au-team.irpo</td>
+    <td align="center">A,PTR</td>
+  </tr>
+  <tr>
+    <td align="center">BR-SRV</td>
+    <td align="center">br-srv.au-team.irpo</td>
+    <td align="center">A</td>
+  </tr>
+  <tr>
+    <td align="center">HQ-RTR</td>
+    <td align="center">moodle.au-team.irpo</td>
+    <td align="center">CNAME</td>
+  </tr>
+  <tr>
+    <td align="center">BR-RTR</td>
+    <td align="center">wiki.au-team.irpo</td>
+    <td align="center">CNAME</td>
+  </tr>
+</table>
+
+<p align="center"><strong>Таблица 2</strong></p>
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+#### Настройка конфигурации bind
+
+Устанавливаем необходимые пакеты:
+```yml
+apt-get install -y bind bind-utils
+```
+
+<br/>
+
+Изменяем содержание перечисленных строк в **`/etc/bind/options.conf`** к следующему виду:
+```yml
+listen-on { 127.0.0.1; 192.168.100.62; };
+
+forwarders { 77.88.8.8; };
+
+allow-query { 192.168.100.0/26; 192.168.200.0/28; 192.168.0.0/27; };
+
+```
+> **`listen-on`** - сетевые интерфейсы, которые будет прослушивать служба
+>
+> **`forwarders`** - DNS-сервер, на который будут перенаправляться запросы клиентов
+>
+> **`allow-query`** - IP-адреса и подсети от которых будут обрабатываться запросы
+
+<br/>
+
+Конфигурируем ключи **rndc**:
+```yml
+rndc-confgen > /etc/rndckey
+```
+> Делаем вывод в файл, чтобы скопировать оттуда
+
+<br/>
+
+Приводим файл **`/etc/bind/rndc.key`** к следующему виду:
+```yml
+//key "rndc-key" {
+//  secret "@RNDC_KEY@";
+//};
+
+key "rndc-key" {
+  algorithm hmac-sha256;
+  secret "VTmhjyXFDo0QpaBl3UQWx1e0g9HElS2MiFDtNQzDylo=";
+};
+```
+> Первые строки закомментировали
+>
+> Вставили ключ **rndc**
+
+<br/>
+
+Проверяем на ошибки:
+```yml
+named-checkconf
+```
+
+<br/>
+
+Запускаем и добавляем в автозагрузку **`bind`**:
+```yml
+systemctl enable --now bind
+```
+
+<br/>
+
+Изменяем **`resolv.conf`** интерфейса:
+```yml
+search au-team.irpo
+nameserver 127.0.0.1
+nameserver 192.168.100.62
+nameserver 77.88.8.8
+search yandex.ru
+```
+
+<br/>
+
+#### Создание и настройка прямой зоны
+
+Прописываем ее в **`/etc/bind/local.conf`**:
+```yml
+zone "au-team.irpo" {
+  type master;
+  file "au-team.irpo.db";
+};
+```
+
+<br/>
+
+Копируем шаблон прямой зоны:
+```yml
+cp /etc/bind/zone/localdomain /etc/bind/zone/au-team.irpo.db
+```
+
+<br/>
+
+Задаем пользователя и права на файл:
+```yml
+chown named. /etc/bind/zone/au-team.irpo.db
+chmod 600 /etc/bind/zone/au-team.irpo.db
+```
+
+<br/>
+
+Приводим его к следующему виду:
+```yml
+$TTL    1D
+@       IN      SOA     au-team.irpo. root.au-team.irpo. (
+                                2024102200      ; serial
+                                12H             ; refresh
+                                1H              ; retry
+                                1W              ; expire
+                                1H              ; ncache
+                        )
+        IN      NS      au-team.irpo.
+        IN      A       192.168.100.62
+hq-rtr  IN      A       192.168.100.1
+br-rtr  IN      A       192.168.0.1
+hq-srv  IN      A       192.168.100.62
+hq-cli  IN      A       192.168.200.14
+br-srv  IN      A       192.168.0.30
+moodle  IN      CNAME   hq-rtr
+wiki    IN      CNAME   hq-rtr
+```
+
+<br/>
+
+Проверяем на ошибки:
+```yml
+named-checkconf -z
+```
+
+<br/>
+
+#### Создание и настройка обратных зон
+
+Прописываем их в **`/etc/bind/local.conf`**:
+```yml
+zone "100.168.192.in-addr.arpa" {
+  type master;
+  file "100.168.192.in-addr.arpa";
+};
+
+zone "200.168.192.in-addr.arpa" {
+  type master;
+  file "200.168.192.in-addr.arpa";
+};
+
+zone "0.168.192.in-addr.arpa" {
+  type master;
+  file "0.168.192.in-addr.arpa";
+};
+```
+
+<br/>
+
+Копируем шаблон обратной зоны:
+```yml
+cp /etc/bind/zone/127.in-addr.arpa /etc/bind/zone/100.168.192.in-addr.arpa
+cp /etc/bind/zone/127.in-addr.arpa /etc/bind/zone/200.168.192.in-addr.arpa
+cp /etc/bind/zone/127.in-addr.arpa /etc/bind/zone/0.168.192.in-addr.arpa
+```
+
+<br/>
+
+Задаем пользователя и права на файл:
+```yml
+chown named. /etc/bind/zone/100.168.192.in-addr.arpa
+chmod 600 /etc/bind/zone/100.168.192.in-addr.arpa
+chown named. /etc/bind/zone/200.168.192.in-addr.arpa
+chmod 600 /etc/bind/zone/200.168.192.in-addr.arpa
+chown named. /etc/bind/zone/0.168.192.in-addr.arpa
+chmod 600 /etc/bind/zone/0.168.192.in-addr.arpa
+```
+
+<br/>
+
+Приводим их к следующему виду:
+```yml
+$TTL    1D
+@       IN      SOA     au-team.irpo. root.au-team.irpo. (
+                                2024102200      ; serial
+                                12H             ; refresh
+                                1H              ; retry
+                                1W              ; expire
+                                1H              ; ncache
+                        )
+        IN      NS      au-team.irpo.
+1       IN      PTR     hq-rtr.au-team.irpo.
+62      IN      PTR     hq-srv.au-team.irpo.
+```
+```yml
+$TTL    1D
+@       IN      SOA     au-team.irpo. root.au-team.irpo. (
+                                2024102200      ; serial
+                                12H             ; refresh
+                                1H              ; retry
+                                1W              ; expire
+                                1H              ; ncache
+                        )
+        IN      NS      au-team.irpo.
+14      IN      PTR     hq-cli.au-team.irpo.
+```
+```yml
+$TTL    1D
+@       IN      SOA     au-team.irpo. root.au-team.irpo. (
+                                2024102200      ; serial
+                                12H             ; refresh
+                                1H              ; retry
+                                1W              ; expire
+                                1H              ; ncache
+                        )
+        IN      NS      au-team.irpo.
+1      IN      PTR      br-rtr.au-team.irpo.
+30     IN      PTR      br-srv.au-team.irpo.
+```
+
+<br/>
+
+Проверяем на ошибки:
+```yml
+named-checkconf -z
+```
+
+<br/>
+
+Перезапускаем **`bind`**:
+```yml
+systemctl restart bind
+```
+
+<br/>
+
+Проверяем работоспособность:
+```yml
+nslookup **IP-адрес/DNS-имя**
+```
+
+</details>
+
+<br/>
+
+## Задание 11
+
+### Настройте часовой пояс на всех устройствах, согласно месту проведения экзамена
+
+<br/>
+
+<details>
+<summary>Решение</summary>
+<br/>
+
+#### Настройка часового пояса на Alt Linux
+
+Меняем часовой пояс следующей командой:
+```yml
+timedatectl set-timezone Asia/Yekaterinburg
+```
+
+<br/>
+
+Проверяем:
+```yml
+timedatectl status
+```
+
+<br/>
+
+#### Настройка часового пояса на EcoRouter
+
+Прописываем команду:
+```yml
+ntp timezone utc+5
+```
+
+<br/>
+
+Проверяем:
+```yml
+show ntp timezone
+```
+
+</details>
