@@ -1,0 +1,361 @@
+Задание 1.
+
+Пункт 1.
+
+	На isp:
+
+hostnamectl set-hostname isp
+exec hash
+
+	На hq-srv:
+
+hostnamectl set-hostname hq-srv.au-team.irpo
+exec bash
+
+	На br-srv:
+
+hostnamectl set-hostname br-srv.au-team.irpo
+exec bash
+
+	На hq-cli - сами!
+
+	На hq-rtr:
+
+en
+conf t
+hostname hq-rtr
+ip domain-name au-team.irpo
+write memory
+
+	На br-rtr:
+en
+conf t
+hostname br-rtr
+ip domain-name au-team.irpo
+write memory
+
+Пункт 2.
+
+	На hq-srv:
+
+ip a
+ls -la /etc/net/ifaces/
+cp -r /etc/net/ifaces/ens18/ /etc/net/ifaces/ens19/
+vim /etc/net/ifaces/ens19/options (нажимаем клавину I, меняем dhcp на static, нажимаем esc, вводим :wq!)
+echo 192.168.100.1/26 >> /etc/net/ifaces/ens19/ipv4address
+echo default via 192.168.100.62 >> /etc/net/ifaces/ens19/ipv4route
+echo search au-team.irpo >> /etc/net/ifaces/ens19/resolv.conf
+echo nameserver 77.88.8.8 >> /etc/net/ifaces/ens19/resolv.conf
+systemctl restart network
+
+	На br-srv:
+ip a
+ls -la /etc/net/ifaces/
+cp -r /etc/net/ifaces/ens18/ /etc/net/ifaces/ens19/
+vim /etc/net/ifaces/ens19/options (нажимаем клавину I, меняем dhcp на static, нажимаем esc, вводим :wq!)
+echo 192.168.100.1/26 >> /etc/net/ifaces/ens19/ipv4address
+echo default via 192.168.100.62 >> /etc/net/ifaces/ens19/ipv4route
+echo search au-team.irpo >> /etc/net/ifaces/ens19/resolv.conf
+echo nameserver 77.88.8.8 >> /etc/net/ifaces/ens19/resolv.conf
+systemctl 
+restart network
+
+	На hq-rtr:
+
+en
+show port brief
+conf  t
+interface ISP
+ip address 172.16.4.14/28
+port te0 
+service-instance te0/ISP 
+encapsulation untagged 
+connect ip interface ISP 
+exit 
+ip route 0.0.0.0/0 172.26.4.1
+interface VL100
+ip address 192.168.100.62/26
+exit
+interface VL200
+ip address 192.168.100.78/28
+exit
+interface VL999
+ip address 192.168.100.86/29
+exit
+
+	На br-rtr:
+
+en
+show port brief
+conf  t
+interface ISP
+ip address 172.16.5.14/28
+port te0 
+service-instance te0/ISP 
+encapsulation untagged 
+connect ip interface ISP 
+exit 
+ip route 0.0.0.0/0 172.16.5.1
+interface BR-Net
+ip address 192.168.200.30/27
+exit
+port te1
+service-instance te1/BRNET
+encapsulation untagged 
+connect ip interface BR-Net 
+exit
+write memory
+
+Задание 2.
+
+Пункт 1.
+
+	На isp:
+
+ip -c a
+ls -la /etc/net/ifaces/
+cp -r /etc/net/ifaces/ens1{8,9}
+ls -la /etc/net/ifaces/
+cat /etc/net/ifaces/ens19/options
+ip -c -br a
+
+Пункт 2.
+
+ip -c -br a (убедитесь что ip адрес динамический)
+
+Пункт 3.
+
+ls -la /etc/net/ifaces/
+cp -r /etc/net/ifaces/ens1{18,20}
+ls -la /etc/net/ifaces/
+cat /etc/net/ifaces/ens20/options (убедитесь что ip адрес статический)
+echo 172.16.4.1/28 >> /etc/net/ifaces/ens20/ipv4address
+ip -c -br a (проверяем что интерфейсы ens19 и ens 20 подняты (up))
+
+Пункт 4.
+
+ls -la /etc/net/ifaces/
+cp -r /etc/net/ifaces/ens1{18,21}
+ls -la /etc/net/ifaces/
+cat /etc/net/ifaces/ens19/options (убедитесь что ip адрес статический)
+echo 172.16.5.1/28 >> /etc/net/ifaces/ens21/ipv4address
+ip -c -br a (убедитесь что все интерфейсы подняты)
+
+Пункт 5.
+
+vim /etc/net/sysctl.conf
+net.ipv4.ip_forward  =  0 (меняем 0 на 1)
+systemctl restart network
+apt-get update
+apt-get install iptables
+iptables –t nat –A POSTROUTING –o ens19 –j MASQUERADE
+iptables-save >> /etc/sysconfig/iptables 
+systemctl enable --now iptables 
+iptables –t nat –L –n –v (Проверить наличие правила в таблице nat в цепочке POSTROUTING)
+
+Задание 3.
+
+Пункт 1.
+
+	На hq-srv, br-srv, hq-cli, ISP:
+
+useradd sshuser –u 1010
+passwd sshuser
+P@ssw0rd
+P@ssw0rd
+vim /etc/sudoers
+Раскомментируйте строку WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL
+gpasswd –a sshuser wheel
+
+Пункт 2. 
+
+	На hq-rtr, br-rtr:
+
+en
+conf t
+username net_admin
+password P@$$word
+role admin 
+ex
+write memory
+show users localdb
+
+Задание 4.
+
+	На hq-srv:
+
+en
+conf t
+interface VL100
+ip address 192.168.100.62/26
+exit
+interface VL200
+ip address 192.168.100.78/28
+exit
+interface VL999
+ip address 192.168.100.86/29
+exit
+port te1 
+service-instance te1/VL100 
+encapsulation dot1q  100
+rewrite pop 1
+connect ip interface VL100 
+exit
+service-instance te1/VL200 
+encapsulation dot1q 200
+rewrite pop 1
+connect ip interface VL200 
+exit
+service-instance te1/VL999 
+encapsulation dot1q 999
+rewrite pop 1
+connect ip interface VL999 
+exit
+
+Задание 5.
+
+	На hq-srv, br-srv:
+
+vim /etc/openssh/sshd_config
+Port  2024
+AllowUsers sshuser
+MaxAuthTries 2
+PasswordAuthentication yes
+Banner /etc/openssh/banner
+vim /etc/openssh/banner
+Authorized access  only (нажимаем клавину I, меняем dhcp на static, нажимаем esc, вводим :wq!)
+systemctl restart sshd
+
+Задание 6.
+
+	На hq-rtr:
+en
+conf t
+int tunnel.0
+ip address 10.10.10.1/30
+ip tunnel 172.168.16.4.14 172.16.5.14 mode gre
+ex
+	На hr-rtr:
+en
+conf t
+int tunnel.0
+ip address 10.10.10.2/30
+ip tunnel 172.168.16.4.14 172.16.5.14 mode gre
+ex
+
+Задание 7.
+
+	На hq-rtr:
+
+en
+conf t
+router ospf 1
+passive-interface default
+no passive-interface tunnel.0
+network 10.10.10.0/30 area 0
+network 192.168.100.0/26 area 0
+network 192.168.100.64/28 area 0
+network 192.168.100.80/29 area 0
+area 0 authentication
+ex
+int tunnel.0
+ip ospf authentication-key P@ssw0rd
+ex
+write memory
+
+Задание 8.
+
+	на hq-rtr:
+
+en
+conf t
+int ISP
+ip nat outside
+ex
+interface vl100
+ip nat inside
+ex
+interface vl200
+ip nat inside
+ex
+interface v1999
+ip nat inside
+ex
+ip nat pool HQ 192.168.100.1-192.168.100.254
+ip nat source dynamic inside-to-outside pool HQ over
+write memory
+
+Задание 9.
+
+	На hq-rtr:
+
+en
+conf t
+ip pool HQ-Clients 192.168.100.65-192.168.1
+dhcp-server 1
+pool HQ-Clients 1
+mask 255.255.255.240
+gateway 192.168.100.78
+dns 192.168.100.1
+domain-name au-team.irpo
+ex
+ex
+interface vl200
+dhcp-server 1
+ex
+write memory 
+
+          На hq-cli:
+
+Поставить dhcp(автоматически) - там же где и имя домена.
+
+Задание 10.
+
+	На hq-srv:
+
+apt-get update
+apt-get install bind
+vim /var/lib/bind/etc/options.conf
+
+Редактировать файл:
+Listen-on ( 192.168.100.1;
+listen-on-v6 { none; };
+forwarders { 77.88.8.8; };
+allow-query { any; };
+allow-recursion { any; };
+
+:wq!
+
+vim /var/lib/bind/etc/rfc1912.conf
+
+Прописать в файл:
+zone "au-team.irpo" {
+        type master;
+        file "au-team.irpo";
+};
+
+zone "100.168.192.in-addr.arpa" {
+         type master;
+         file "100.168.192.in-addr.arpa";
+};
+
+:wq!
+
+cd /var/lib/bind/etc/zone
+cp empty au-team.irpo
+cp empty 100.168.192.in-addr.arpa
+rndc-confgen > /etc/bind/rndc.key
+sed -i ‘6,$d’ rndc.key
+chgrp -R named /var/lib/bind/etc/zone/
+named-checkconf
+named-checkconf -z
+systemctl enable --now bind.service
+systemctl status bind
+ping -c3 ya.ru
+
+Задание 11.
+
+    На hq-srv, br-srv, hq-cli:
+timedatectl set-timezone Asia/Novosibirsk 
+    На hq-rtr, br-rtr:
+ntp timezone utc+7
