@@ -1,4 +1,5 @@
-##ISP - Alt Linux
+## **ISP - Alt Linux**
+
 hostnamectl set-hostname isp.au-team.irpo; exec bash
 timedatectl set-timezone Asia/Novosibirsk
 
@@ -50,7 +51,7 @@ ALL=(ALL:ALL) NOPASSWD: ALL
 usermod -aG wheel sshuser
 
 
-##HQ-RTR - EcoRouter
+## **HQ-RTR - EcoRouter**
 en 
 conf t
 hostname hq-rtr
@@ -134,7 +135,7 @@ write memory
 
 
 
-##BR-RTR - EcoRouter
+## **BR-RTR - EcoRouter**
 en 
 conf t
 hostname br-rtr
@@ -182,7 +183,7 @@ ip nat source dynamic inside-to-outside pool BR overload interface te0
 write memory
 
 
-##HQ-SRV - Alt Linux
+## **HQ-SRV - Alt Linux**
 hostnamectl set-hostname hq-srv.au-team.irpo; exec bash
 timedatectl set-timezone Asia/Novosibirsk
 nano /etc/net/ifaces/.../
@@ -223,7 +224,7 @@ Authorized access only.
 
 systemctl restart sshd
 
-##HQ-CLI - Alt Linux
+## **HQ-CLI - Alt Linux**
 hostnamectl set-hostname hq-cli.au-team.irpo; exec bash
 timedatectl set-timezone Asia/Novosibirsk
 nano /etc/net/ifaces/.../
